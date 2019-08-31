@@ -1,0 +1,53 @@
+<resources>
+    <string name="test_data">テスト</string>
+
+    <string name="app_name">ReFMA</string>
+    <string name="tab_text_1">残り3日</string>
+    <string name="tab_text_2">期限切れ</string>
+    <string name="tab_text_3">その他</string>
+    <string name="tab_text_4">データ</string>
+
+    <string name="tv_item_name">ここは商品名がはいるよ</string>
+    <string name="tv_item_deadline_label">期限：</string>
+    <string name="tv_item_deadline">2019/9/23</string>
+
+    <string name="tv_edit_name">品名</string>
+    <string name="tv_edit_deadline">使用期限</string>
+    <string name="tv_edit_bought_day">購入日</string>
+    <string name="tv_edit_price">価格（円）</string>
+    <string name="tv_edit_volume">内容量（g）</string>
+    <string name="tv_edit_remnant">残り（g）</string>
+    <string name="tv_edit_r">アイコン画像</string>
+
+    <string name="dialog_check_delete_title">データ削除確認</string>
+    <string name="dialog_check_delete_text">データを削除します。本当によろしいですか？</string>
+    <string name="dialog_check_delete_ok">削除</string>
+    <string name="dialog_check_delete_no">キャンセル</string>
+
+    <string name="dialog_check_dump_title">食品廃棄確認</string>
+    <string name="dialog_check_dump_text">食品を廃棄します。本当によろしいですか？</string>
+    <string name="dialog_check_dump_ok">廃棄</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="bt_edit_save">データを保存</string>
+    <string name="tv_edit_icon_image">アイコンを編集</string>
+    <string name="tv_edit_title_label">食材の追加・編集</string>
+    <string name="tv_choose_icon_label">アイコンを選んでください</string>
+    <string name="tv_edit_title">食品データ詳細</string>
+    <string name="tv_edit_bought_day_label">購入日：</string>
+    <string name="tv_edit_price_label">価格（円）：</string>
+    <string name="tv_edit_volume_label">内容量（g）：</string>
+    <string name="tv_edit_remnant_label">残り（g）：</string>
+    <string name="bt_edit_edit">編集</string>
+    <string name="bt_edit_delete">削除</string>
+    <string name="bt_edit_dump">廃棄</string>
+    <string name="bt_edit_use">使用</string>
+    <string name="tv_edit_use_label">この食品を</string>
+    <string name="tv_edit_g_label">g</string>
+    <string name="tv_graph_dump_title">食品廃棄量(g)</string>
+    <string name="tv_graph_bought_label">食品購入量(g)</string>
+    <string name="tv_graph_rate_label">あなたの食品廃棄率は…</string>
+    <string name="tv_graph_rate_percent">%</string>
+    <string name="tv_empty"/>
+</resources>

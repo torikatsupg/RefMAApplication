@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:scrollbars="vertical"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".EditDataActivity">
+
+        <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp" tools:srcCompat="@drawable/ic_0"
+                android:id="@+id/ivIcon"
+                android:layout_marginTop="8dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                app:layout_constraintTop_toBottomOf="@+id/textView9" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp" app:srcCompat="@drawable/ic_1"/>
+        <TextView
+                android:text="@string/tv_edit_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView9" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp" android:layout_marginTop="8dp"
+                app:layout_constraintTop_toTopOf="parent" android:textSize="24sp"/>
+        <androidx.constraintlayout.widget.Guideline android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content" android:id="@+id/guideline2"
+                                                    app:layout_constraintGuide_begin="8dp"
+                                                    android:orientation="vertical"/>
+        <TextView
+                android:text="@string/test_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvDataName"
+                app:layout_constraintTop_toBottomOf="@+id/ivIcon"
+                app:layout_constraintStart_toStartOf="@+id/guideline2" android:layout_marginStart="8dp"
+                android:textSize="24sp" android:layout_marginTop="16dp"/>
+        <TextView
+                android:text="@string/tv_item_deadline_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView14" app:layout_constraintStart_toStartOf="@+id/guideline2"
+                android:layout_marginStart="8dp" app:layout_constraintTop_toBottomOf="@+id/tvDataName"
+                android:layout_marginTop="16dp" android:textSize="18sp"/>
+        <TextView
+                android:text="@string/test_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvDataDeadline"
+                app:layout_constraintBaseline_toBaselineOf="@+id/textView14"
+                android:textSize="18sp" app:layout_constraintStart_toStartOf="@+id/guideline3"
+                android:layout_marginStart="8dp"/>
+        <TextView
+                android:text="@string/tv_edit_bought_day_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView17"
+                app:layout_constraintTop_toBottomOf="@+id/textView14"
+                app:layout_constraintStart_toStartOf="@+id/guideline2" android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp" android:textSize="18sp"/>
+        <TextView
+                android:text="@string/test_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvDataBoughtDay"
+                android:layout_marginStart="8dp" app:layout_constraintBaseline_toBaselineOf="@+id/textView17"
+                android:textSize="18sp" app:layout_constraintStart_toStartOf="@+id/guideline3"/>
+        <TextView
+                android:text="@string/tv_edit_price_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView19" app:layout_constraintStart_toStartOf="@+id/guideline2"
+                android:layout_marginStart="8dp" app:layout_constraintTop_toBottomOf="@+id/textView17"
+                android:layout_marginTop="16dp" android:textSize="18sp"/>
+        <TextView
+                android:text="@string/test_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvDataPrice"
+                android:layout_marginStart="8dp" app:layout_constraintBaseline_toBaselineOf="@+id/textView19"
+                android:textSize="18sp" app:layout_constraintStart_toStartOf="@+id/guideline3"/>
+        <TextView
+                android:text="@string/tv_edit_volume_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView21" app:layout_constraintStart_toStartOf="@+id/guideline2"
+                android:layout_marginStart="8dp" app:layout_constraintTop_toBottomOf="@+id/textView19"
+                android:layout_marginTop="16dp" android:textSize="18sp"/>
+        <TextView
+                android:text="@string/test_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvDataVolume"
+                android:layout_marginStart="8dp" app:layout_constraintBaseline_toBaselineOf="@+id/textView21"
+                android:textSize="18sp" app:layout_constraintStart_toStartOf="@+id/guideline3"/>
+        <TextView
+                android:text="@string/tv_edit_remnant_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView23" app:layout_constraintStart_toStartOf="@+id/guideline2"
+                android:layout_marginStart="8dp" app:layout_constraintTop_toBottomOf="@+id/textView21"
+                android:layout_marginTop="16dp" android:textSize="18sp"/>
+        <TextView
+                android:text="@string/test_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvDataRemnant"
+                android:layout_marginStart="8dp" app:layout_constraintBaseline_toBaselineOf="@+id/textView23"
+                android:textSize="18sp" app:layout_constraintStart_toStartOf="@+id/guideline3"/>
+        <androidx.constraintlayout.widget.Guideline
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" app:layout_constraintGuide_begin="176dp"
+                android:id="@+id/guideline3"/>
+        <Button
+                android:text="@string/bt_edit_dump"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btDump"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDataRemnant" android:layout_marginTop="32dp"/>
+        <Button
+                android:text="@string/bt_edit_use"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:id="@+id/btUse"
+                app:layout_constraintBaseline_toBaselineOf="@+id/btDump"
+                app:layout_constraintEnd_toStartOf="@+id/btDump" android:layout_marginEnd="16dp"/>
+        <TextView
+                android:text="@string/tv_edit_use_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView25"
+                app:layout_constraintBaseline_toBaselineOf="@+id/etUse"
+                app:layout_constraintStart_toStartOf="@+id/guideline2" android:layout_marginStart="8dp"/>
+        <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/etUse"
+                app:layout_constraintStart_toEndOf="@+id/textView25" android:layout_marginStart="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/textView26" android:layout_marginEnd="8dp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/textView26"/>
+        <TextView
+                android:text="@string/tv_edit_g_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView26" app:layout_constraintEnd_toStartOf="@+id/btUse"
+                android:layout_marginEnd="8dp" app:layout_constraintBaseline_toBaselineOf="@+id/btUse"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
