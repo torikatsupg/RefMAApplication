@@ -33,7 +33,7 @@ class CastCalendarType {
 
     //now →　before30DaysMillis
     fun getPrimaryKey() : Long {
-        return System.currentTimeMillis() - (30 * 24 * 60 * 60 * 1000)
+        return  System.currentTimeMillis() - (30L * 24L * 60L * 60L * 1000L)
     }
 
     //"yyyy/MM/dd"　→　Long

@@ -27,9 +27,7 @@ class MainActivity : AppCompatActivity() {
         tabs.setupWithViewPager(viewPager)
         fab = findViewById(R.id.fab)
         //fabリスナ
-        fab.setOnClickListener { view ->
-            onFabButtonClick(view)
-        }
+        fab.setOnClickListener { onFabButtonClick() }
     }
 
     override fun onRestart() {
@@ -37,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         viewPager.adapter = SectionsPagerAdapter(applicationContext, supportFragmentManager)
     }
 
-    private fun onFabButtonClick(view: View) {
+    private fun onFabButtonClick() {
         val intent = Intent(applicationContext, AddDataActivity::class.java)
         startActivity(intent)
     }
