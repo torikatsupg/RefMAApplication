@@ -34,11 +34,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onRestart() {
         super.onRestart()
-        val sectionsPagerAdapter = SectionsPagerAdapter(applicationContext, supportFragmentManager)
-        viewPager = findViewById(R.id.view_pager)
-        viewPager.adapter = sectionsPagerAdapter
-        tabs = findViewById(R.id.tabs)
-        tabs.setupWithViewPager(viewPager)
+        viewPager.adapter = SectionsPagerAdapter(applicationContext, supportFragmentManager)
     }
 
     private fun onFabButtonClick(view: View) {

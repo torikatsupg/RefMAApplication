@@ -150,7 +150,7 @@ class AddDataActivity : AppCompatActivity(), DatePickerDialogFragment.OnDateSele
                 showToast("入力内容が正しくありません。")
                 return
             } else if (_isEditMode) {
-                var sql = "UPDATE refrigerator SET name=?, deadline=?, boughtDay=?, price=?, volume=?, remnant=?, iconImage=? WHERE _primaryKey =?"
+                var sql = "UPDATE refrigerator SET name=?, deadline=?, boughtDay=?, price=?, volume=?, remnant=?, iconImage=? WHERE _id=?"
                 var stmt = db.compileStatement(sql)
                 stmt.bindString(1, name)
                 stmt.bindLong(2, dead)

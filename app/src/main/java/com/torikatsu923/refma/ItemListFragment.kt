@@ -12,6 +12,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import java.lang.Exception
 
 class ItemListFragment : Fragment() {
 
@@ -72,12 +73,16 @@ class ItemListFragment : Fragment() {
         }
         val cursor = db.rawQuery(sql, null)
         cursor.moveToFirst()
-        while (cursor.moveToNext()) {
-            val primaryKey = _csGetter.getLon("_id", cursor)
-            val name = _csGetter.getStr("name", cursor)
-            val deadline = _csGetter.getLonByStr("deadline", cursor)
-            val iconId = _csGetter.getLon("iconImage", cursor)
-            list.add(mutableMapOf("primaryKey" to primaryKey, "name" to name, "deadline" to deadline, "iconId" to iconId))
+        try {
+            do {
+                val primaryKey = _csGetter.getLon("_id", cursor)
+                val name = _csGetter.getStr("name", cursor)
+                val deadline = _csGetter.getLonByStr("deadline", cursor)
+                val iconId = _csGetter.getLon("iconImage", cursor)
+                list.add(mutableMapOf("primaryKey" to primaryKey, "name" to name, "deadline" to deadline, "iconId" to iconId))
+            } while (cursor.moveToNext())
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
         return list
     }

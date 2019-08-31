@@ -104,14 +104,14 @@ class EditDataActivity : AppCompatActivity() {
             val amount = remnant - use
             val db = _helper.writableDatabase
             if(use != -1L && (amount) > 0) {
-                val sql = "UPDATE refrigerator SET remnant = ? WHERE _id=?"
+                val sql = "UPDATE refrigerator SET remnant=? WHERE _id=?"
                 val stmt = db.compileStatement(sql)
                 stmt.bindLong(1, amount)
                 stmt.bindLong(2, _primaryKey)
                 stmt.execute()
                 finish()
             } else if(use != -1L && amount == 0L) {
-                val sql = "DELETE FROM refrigerator WHERE _primaryKey = ?"
+                val sql = "DELETE FROM refrigerator WHERE _id = ?"
                 val stmt = db.compileStatement(sql)
                 stmt.bindLong(1, _primaryKey)
                 stmt.executeUpdateDelete()
@@ -133,7 +133,7 @@ class EditDataActivity : AppCompatActivity() {
                 finish()
             }
             R.id.menuDelete -> {
-                val dialog = DeleteCheckDialogFragment.newInstance(_primaryKey, true)
+                val dialog = DeleteCheckDialogFragment.newInstance(_primaryKey, false)
                 dialog.show(supportFragmentManager, "DeleteCheckDialogFragment")
             }
             android.R.id.home -> {

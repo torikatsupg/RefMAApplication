@@ -14,6 +14,7 @@ import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.formatter.IAxisValueFormatter
+import java.lang.Exception
 
 
 class GraphFragment : Fragment() {
@@ -104,23 +105,27 @@ class GraphFragment : Fragment() {
         val sql = "SELECT * FROM $databaseName"
         val cursor = db.rawQuery(sql, null)
         cursor.moveToFirst()
-        while (cursor.moveToNext()) {
-            var isDataExist = false
-            for (item in data) {
-                if (item["date"] == _csGetter.getLon("${key}Day", cursor)) {
-                    item["volume"]?.plus(_csGetter.getLon("volume", cursor))?.let { item.put("volume", it) }
-                    isDataExist = true
-                    break
+        try {
+            do {
+                var isDataExist = false
+                for (item in data) {
+                    if (item["date"] == _csGetter.getLon("${key}Day", cursor)) {
+                        item["volume"]?.plus(_csGetter.getLon("volume", cursor))?.let { item.put("volume", it) }
+                        isDataExist = true
+                        break
+                    }
                 }
-            }
-            if (!isDataExist) data.add(mutableMapOf("date" to _csGetter.getLon("${key}Day", cursor), "volume" to _csGetter.getLon("volume", cursor)))
+                if (!isDataExist) data.add(mutableMapOf("date" to _csGetter.getLon("${key}Day", cursor), "volume" to _csGetter.getLon("volume", cursor)))
+            } while (cursor.moveToNext())
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
         val entries = mutableListOf<Entry>()
         for (item in data) {
             entries.add(Entry(item["date"]!!.toFloat(), item["volume"]!!.toFloat()))
         }
         return LineData(LineDataSet(entries,"$chartLabel"))
-        }
+    }
 
    private fun outputRate() : Double{
        var totalDump = 0L
@@ -131,8 +136,10 @@ class GraphFragment : Fragment() {
        for(item in _boughtList) {
            totalUse += item["volume"] as Long
        }
-       return totalDump.toDouble() / totalUse.toDouble() * 100
-
+       var result = totalDump.toDouble() / totalUse.toDouble() * 100.0
+       if(result > 100.0) result = 100.0
+       if(totalDump == 0L || totalUse == 0L) result = 0.0
+       return result
    }
 
 }
