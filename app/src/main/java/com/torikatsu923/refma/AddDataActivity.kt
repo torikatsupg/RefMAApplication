@@ -114,7 +114,7 @@ class AddDataActivity : AppCompatActivity(), DatePickerDialogFragment.OnDateSele
         return super.onOptionsItemSelected(item)
     }
 
-    fun onIvIconClick() {
+    fun onIvIconClick(view: View) {
         val intent = Intent(applicationContext, ChooseIconActivity::class.java)
         intent.putExtra("iconTablePosition", _iconTablePosition)
         startActivity(intent)
@@ -129,7 +129,7 @@ class AddDataActivity : AppCompatActivity(), DatePickerDialogFragment.OnDateSele
         DatePickerDialogFragment(isTvDeadline).show(supportFragmentManager, "deadlineDialog")
     }
 
-    fun onSaveButtonClick() {
+    fun onSaveButtonClick(view: View) {
         //入力情報の取得
         val name = nameView.text.toString()
         val deadStr = deadView.text.toString()

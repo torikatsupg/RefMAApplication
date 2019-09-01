@@ -26,6 +26,13 @@ class CastCalendarType {
         return dateToFormat( Date(long))
     }
 
+    //Long　→　"MM/dd"
+    fun longToMMdd(long: Long): String {
+        val format = SimpleDateFormat("MM/dd")
+        val date = Date(long)
+        return format.format(date)
+    }
+
     //now →Format
     fun getNowFormat () : String {
         return longToFormat(System.currentTimeMillis())
@@ -44,6 +51,11 @@ class CastCalendarType {
     //now RoundLong
     fun getNowLongRound () : Long {
         return formatToLong(longToFormat(System.currentTimeMillis()))
+    }
+
+    //long → RoundLong
+    fun longToLongRound (l: Long) : Long {
+        return formatToLong(longToFormat(l))
     }
 
     

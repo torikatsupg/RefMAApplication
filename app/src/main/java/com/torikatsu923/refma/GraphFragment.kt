@@ -11,10 +11,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.github.mikephil.charting.charts.LineChart
+import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.formatter.IAxisValueFormatter
 import java.lang.Exception
+import com.github.mikephil.charting.data.LineDataSet
+
+
 
 
 class GraphFragment : Fragment() {
@@ -30,8 +34,6 @@ class GraphFragment : Fragment() {
     companion object {
         fun newInstance() : GraphFragment {
             val fragment = GraphFragment()
-            fragment._boughtList.add(mutableMapOf("date" to 0L, "volume" to 0L))
-            fragment._dumpList.add(mutableMapOf("date" to 0L, "volume" to 0L))
             return fragment
 
         }
@@ -64,17 +66,21 @@ class GraphFragment : Fragment() {
         v.apply {
             this.description.isEnabled = false
             this.setTouchEnabled(false)
-            this.isScaleXEnabled = true
+            this.isScaleXEnabled = false
             this.isDragEnabled = false
             this.setPinchZoom(false)
             this.setDrawGridBackground(false)
             this.axisLeft.textColor = Color.BLACK
             this.axisRight.isEnabled = false
             this.axisLeft.axisMinimum = 0f
-            this.axisLeft.axisMaximum = 20000f
             this.axisLeft.labelCount = 5
-            this.xAxis.labelCount = 1
-            this.xAxis.valueFormatter = IAxisValueFormatter { _, _ -> "" }
+            //this.xAxis.labelCount = 6
+            this.xAxis.valueFormatter =  IAxisValueFormatter { value, _ ->
+                if(_caster.longToLongRound(value.toLong()) % (3L * 60L * 60L * 1000L) == 0L) {
+                    _caster.longToMMdd(value.toLong())
+                } else ""
+            }
+            this.xAxis.position = XAxis.XAxisPosition.BOTTOM
         }
     }
 
@@ -100,7 +106,6 @@ class GraphFragment : Fragment() {
             }
         }
         data.clear()
-        data.add(mutableMapOf("date" to 0L, "volume" to 0L))
         val db = _helper.writableDatabase
         val sql = "SELECT * FROM $databaseName"
         val cursor = db.rawQuery(sql, null)
