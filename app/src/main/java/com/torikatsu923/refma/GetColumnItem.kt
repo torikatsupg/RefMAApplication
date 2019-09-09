@@ -11,6 +11,10 @@ class GetColumnItem {
         return cursor.getLong(cursor.getColumnIndex("$key"))
     }
 
+    fun getInt (key: String, cursor: Cursor) : Int{
+        return cursor.getInt(cursor.getColumnIndex("$key"))
+    }
+
     fun getLonByStr (key: String, cursor: Cursor) : String{
         return cursor.getLong(cursor.getColumnIndex("$key")).toString()
     }

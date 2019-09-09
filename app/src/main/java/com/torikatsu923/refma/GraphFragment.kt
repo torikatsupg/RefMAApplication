@@ -4,7 +4,6 @@ package com.torikatsu923.refma
 import android.database.sqlite.SQLiteOpenHelper
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +14,6 @@ import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.formatter.IAxisValueFormatter
-import java.lang.Exception
 import com.github.mikephil.charting.data.LineDataSet
 
 
@@ -33,8 +31,7 @@ class GraphFragment : Fragment() {
 
     companion object {
         fun newInstance() : GraphFragment {
-            val fragment = GraphFragment()
-            return fragment
+            return GraphFragment()
 
         }
     }
@@ -93,6 +90,7 @@ class GraphFragment : Fragment() {
         val key: String
         val chartLabel: String
         val data: MutableList<MutableMap<String, Long>>
+        val db = _helper.writableDatabase
         when (databaseName) {
             "dump" -> {
                 data = _dumpList
@@ -106,11 +104,15 @@ class GraphFragment : Fragment() {
             }
         }
         data.clear()
-        val db = _helper.writableDatabase
+        //データベースのデータ数をが0かどうか確認
+        val countSqlStr = "SELECT COUNT(*) count FROM $databaseName "
+        val countCursor = db.rawQuery(countSqlStr, null)
+        countCursor.moveToFirst()
+        val recordSize = _csGetter.getInt("count", countCursor)
         val sql = "SELECT * FROM $databaseName"
         val cursor = db.rawQuery(sql, null)
         cursor.moveToFirst()
-        try {
+        if(recordSize != 0) {
             do {
                 var isDataExist = false
                 for (item in data) {
@@ -122,8 +124,8 @@ class GraphFragment : Fragment() {
                 }
                 if (!isDataExist) data.add(mutableMapOf("date" to _csGetter.getLon("${key}Day", cursor), "volume" to _csGetter.getLon("volume", cursor)))
             } while (cursor.moveToNext())
-        } catch (e: Exception) {
-            e.printStackTrace()
+        } else {
+            data.add(mutableMapOf("date" to 0L, "volume" to 0L))
         }
         val entries = mutableListOf<Entry>()
         for (item in data) {

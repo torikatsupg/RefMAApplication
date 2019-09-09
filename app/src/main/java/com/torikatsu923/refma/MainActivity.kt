@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         val fab: FloatingActionButton = findViewById(R.id.fab)
         //fabリスナ
         fab.setOnClickListener { onFabButtonClick() }
+        //TutorialActivity.showIfNeeded(this@MainActivity, savedInstanceState)
     }
 
     override fun onRestart() {
