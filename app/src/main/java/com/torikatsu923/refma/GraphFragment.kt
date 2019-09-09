@@ -109,6 +109,7 @@ class GraphFragment : Fragment() {
         val countCursor = db.rawQuery(countSqlStr, null)
         countCursor.moveToFirst()
         val recordSize = _csGetter.getInt("count", countCursor)
+        //データベースの取得
         val sql = "SELECT * FROM $databaseName"
         val cursor = db.rawQuery(sql, null)
         cursor.moveToFirst()
@@ -122,7 +123,12 @@ class GraphFragment : Fragment() {
                         break
                     }
                 }
-                if (!isDataExist) data.add(mutableMapOf("date" to _csGetter.getLon("${key}Day", cursor), "volume" to _csGetter.getLon("volume", cursor)))
+                if (!isDataExist) {
+                    data.add(mutableMapOf(
+                        "date" to _csGetter.getLon("${key}Day", cursor),
+                        "volume" to _csGetter.getLon("volume", cursor)
+                    ))
+                }
             } while (cursor.moveToNext())
         } else {
             data.add(mutableMapOf("date" to 0L, "volume" to 0L))
